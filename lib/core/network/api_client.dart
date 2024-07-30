@@ -14,7 +14,7 @@ class ApiClient {
     _dio.interceptors.add(
       QueryParamInterceptor(
         paramKey: 'api_key',
-        paramValue: dotenv.env['VAR_NAME']!,
+        paramValue: dotenv.env['API_KEY']!,
       ),
     );
   }
