@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
           BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               return IconButton(
-                icon: state.isListMode
+                icon: state.isGridMode
                     ? const Icon(
                         Icons.list,
                       )
@@ -60,12 +60,15 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          return state.isListMode
-              ? HomeItemsListView(items: homeItems)
-              : HomeItemsGridView(items: homeItems);
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            return state.isListMode
+                ? HomeItemsListView(items: homeItems)
+                : HomeItemsGridView(items: homeItems);
+          },
+        ),
       ),
     );
   }

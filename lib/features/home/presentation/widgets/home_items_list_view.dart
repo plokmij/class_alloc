@@ -9,14 +9,44 @@ class HomeItemsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ColoredBox(
-      color: Colors.green,
-      child: Column(
-        children: [
-          Center(
-            child: Text('List'),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        for (final item in items) _HomeItemListItem(item: item),
+      ],
+    );
+  }
+}
+
+class _HomeItemListItem extends StatelessWidget {
+  const _HomeItemListItem({
+    required this.item,
+  });
+
+  final HomeItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 0,
+      margin: const EdgeInsets.symmetric(vertical: 20),
+      color: item.color.withOpacity(0.35),
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).pushNamed(item.route);
+        },
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              item.title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
