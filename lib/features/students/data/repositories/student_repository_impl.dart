@@ -1,10 +1,12 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/student.dart';
 import '../../domain/repositories/student_repository.dart';
 import '../datasources/student_data_source.dart';
 
+@Injectable(as: StudentRepository)
 class StudentRepositoryImpl implements StudentRepository {
   final StudentDataSource studentDataSource;
 

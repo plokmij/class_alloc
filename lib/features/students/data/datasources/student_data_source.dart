@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:class_alloc/core/network/api_client.dart';
+import 'package:injectable/injectable.dart';
 
 import '../models/student_model.dart';
 
@@ -9,6 +10,7 @@ abstract class StudentDataSource {
   Future<StudentModel> getStudentById(int id);
 }
 
+@Injectable(as: StudentDataSource)
 class StudentDataSourceImpl implements StudentDataSource {
   final ApiClient apiClient;
 
