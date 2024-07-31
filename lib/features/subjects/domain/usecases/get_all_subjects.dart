@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
-import '../entities/subject.dart';
-import '../repositories/subject_repository.dart';
+import '../../../../core/domain/entities/subject.dart';
+import '../../../../core/domain/repositories/subject_repository.dart';
 
 @injectable
 class GetAllSubjects implements UseCase<List<Subject>, NoParams> {

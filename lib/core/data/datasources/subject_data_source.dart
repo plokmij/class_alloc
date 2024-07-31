@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/network/api_client.dart';
+import '../../network/api_client.dart';
 import '../models/subject_model.dart';
 
 abstract class SubjectDataSource {
