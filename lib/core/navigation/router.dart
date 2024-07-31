@@ -1,3 +1,5 @@
+import 'package:class_alloc/features/students/presentation/pages/student_details_page.dart';
+
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/students/presentation/pages/students_page.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,13 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/students',
       builder: (context, state) => StudentsPage(),
+    ),
+    GoRoute(
+      path: '/students/:id',
+      builder: (context, state) {
+        final id = int.parse(state.pathParameters['id'] ?? '');
+        return StudentDetailsPage(studentId: id);
+      },
     ),
     GoRoute(
       path: '/subjects',
