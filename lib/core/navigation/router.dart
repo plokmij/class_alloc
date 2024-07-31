@@ -1,3 +1,5 @@
+import 'package:class_alloc/features/registration/presentation/pages/registration_detail_page.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/classrooms/presentation/pages/classroom_detail_page.dart';
@@ -15,61 +17,70 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) => HomePage(),
-    ),
-    GoRoute(
-      path: '/students',
       routes: [
         GoRoute(
-          path: ':id',
-          builder: (context, state) {
-            final id = int.parse(state.pathParameters['id'] ?? '');
-            return StudentDetailsPage(studentId: id);
-          },
+          path: 'students',
+          routes: [
+            GoRoute(
+              path: ':id',
+              builder: (context, state) {
+                final id = int.parse(state.pathParameters['id'] ?? '');
+                return StudentDetailsPage(studentId: id);
+              },
+            ),
+          ],
+          builder: (context, state) => StudentsPage(),
+        ),
+        GoRoute(
+          path: 'subjects',
+          routes: [
+            GoRoute(
+              path: ':id',
+              builder: (context, state) {
+                final id = int.parse(state.pathParameters['id'] ?? '');
+                return SubjectDetailPage(subjectId: id);
+              },
+            ),
+          ],
+          builder: (context, state) => SubjectsPage(),
+        ),
+        GoRoute(
+          path: 'classrooms',
+          routes: [
+            GoRoute(
+              path: ':id',
+              builder: (context, state) {
+                final id = int.parse(state.pathParameters['id'] ?? '0');
+                return ClassroomDetailPage(
+                  id: id,
+                  classroomName: state.extra as String,
+                );
+              },
+            ),
+          ],
+          builder: (context, state) => ClassroomsPage(),
+        ),
+        GoRoute(
+          path: 'registration',
+          routes: [
+            GoRoute(
+              path: ':id',
+              builder: (context, state) {
+                final id = int.parse(state.pathParameters['id'] ?? '');
+                return RegistrationDetailPage(
+                  registrationId: id,
+                );
+              },
+            ),
+          ],
+          builder: (context, state) => RegistrationsPage(),
         ),
       ],
-      builder: (context, state) => StudentsPage(),
-    ),
-    // GoRoute(
-    //   path: '/students/:id',
-    //   builder: (context, state) {
-    //     final id = int.parse(state.pathParameters['id'] ?? '');
-    //     return StudentDetailsPage(studentId: id);
-    //   },
-    // ),
-    GoRoute(
-      path: '/subjects',
-      builder: (context, state) => SubjectsPage(),
     ),
     GoRoute(
-      path: '/subjects/select',
-      builder: (context, state) => SubjectsPage(
-        isSelectorMode: true,
-      ),
-    ),
-    GoRoute(
-      path: '/subjects/:id',
-      builder: (context, state) {
-        final id = int.parse(state.pathParameters['id'] ?? '');
-        return SubjectDetailPage(subjectId: id);
-      },
-    ),
-    GoRoute(
-      path: '/classrooms',
-      builder: (context, state) => ClassroomsPage(),
-    ),
-    GoRoute(
-      path: '/classrooms/:id',
-      builder: (context, state) {
-        final id = int.parse(state.pathParameters['id'] ?? '');
-        return ClassroomDetailPage(
-          id: id,
-          classroomName: state.extra as String,
-        );
-      },
-    ),
-    GoRoute(
-      path: '/registration',
-      builder: (context, state) => RegistrationsPage(),
+      path: '/subject-selection',
+      name: 'subject-selection',
+      builder: (context, state) => SubjectsPage(isSelectorMode: true),
     ),
   ],
 );
