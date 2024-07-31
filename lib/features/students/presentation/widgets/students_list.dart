@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../domain/entities/student.dart';
 
@@ -40,6 +41,9 @@ class StudentTile extends StatelessWidget {
       color: Colors.grey.shade300,
       elevation: 0,
       child: ListTile(
+        onTap: () {
+          context.push('/students/${student.id}');
+        },
         title: Text(student.name),
         subtitle: Text(student.email),
         trailing: Text('Age: ${student.age.toString()}'),

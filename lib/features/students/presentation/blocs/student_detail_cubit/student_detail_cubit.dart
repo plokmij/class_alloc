@@ -1,11 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../domain/entities/student.dart';
 import '../../../domain/usecases/get_student_by_id.dart';
 
 part 'student_detail_state.dart';
 
+@injectable
 class StudentDetailCubit extends Cubit<StudentDetailState> {
   StudentDetailCubit({required this.getStudentById})
       : super(StudentDetailInitial());

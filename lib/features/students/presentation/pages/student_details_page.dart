@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../domain/entities/student.dart';
 import '../blocs/student_detail_cubit/student_detail_cubit.dart';
 
 class StudentDetailsPage extends StatefulWidget {
@@ -19,7 +20,7 @@ class _StudentDetailsPageState extends State<StudentDetailsPage> {
   @override
   void initState() {
     super.initState();
-    context.read<StudentDetailCubit>().getStudentById(widget.studentId);
+    context.read<StudentDetailCubit>().getStudent(widget.studentId);
   }
 
   @override
@@ -39,12 +40,10 @@ class _StudentDetailsPageState extends State<StudentDetailsPage> {
               child: CircularProgressIndicator(),
             );
           } else if (state is StudentDetailLoaded) {
-            return Column(
-              children: [
-                Text(state.student.name),
-                Text(state.student.email),
-                Text('Age: ${state.student.age.toString()}'),
-              ],
+            return Center(
+              child: StudentDetailWidget(
+                student: state.student,
+              ),
             );
           } else if (state is StudentDetailError) {
             return Column(
@@ -69,6 +68,54 @@ class _StudentDetailsPageState extends State<StudentDetailsPage> {
           }
         },
       ),
+    );
+  }
+}
+
+class StudentDetailWidget extends StatelessWidget {
+  const StudentDetailWidget({
+    super.key,
+    required this.student,
+  });
+
+  final Student student;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        CircleAvatar(
+          radius: 80,
+          child: Icon(
+            Icons.person,
+            size: 100,
+          ),
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        Text(
+          student.name,
+          style: TextStyle(fontSize: 21),
+        ),
+        Text(
+          'Age: ${student.age.toString()}',
+          style: TextStyle(
+            fontSize: 21,
+          ),
+        ),
+        Text(
+          student.email,
+          style: TextStyle(
+            fontSize: 18,
+          ),
+        ),
+        SizedBox(
+          height: 60,
+        ),
+      ],
     );
   }
 }
