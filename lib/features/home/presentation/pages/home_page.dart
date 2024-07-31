@@ -23,16 +23,16 @@ class HomePage extends StatelessWidget {
       route: '/subjects',
     ),
     HomeItem(
-      title: 'Classes',
-      icon: Icons.class_,
-      color: Colors.orange,
-      route: '/classes',
+      title: 'Class Rooms',
+      icon: Icons.room_outlined,
+      color: Colors.redAccent,
+      route: '/class-rooms',
     ),
     HomeItem(
-      title: 'Teachers',
-      icon: Icons.person,
-      color: Colors.purple,
-      route: '/teachers',
+      title: 'Registration',
+      icon: Icons.edit_outlined,
+      color: Colors.orangeAccent,
+      route: '/registration',
     ),
   ];
 
