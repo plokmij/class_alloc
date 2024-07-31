@@ -18,7 +18,6 @@ class ClassroomDataSourceImpl implements ClassroomDataSource {
 
   @override
   Future<ClassroomDetailModel> allocateSubject(int id, int subjectId) async {
-    print('inside allocation api call');
     final response = await apiClient.patch(
       '/classrooms/$id',
       {'subject': subjectId},

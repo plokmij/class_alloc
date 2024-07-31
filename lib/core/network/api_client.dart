@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 @singleton
 class ApiClient {
@@ -16,6 +17,16 @@ class ApiClient {
       QueryParamInterceptor(
         paramKey: 'api_key',
         paramValue: dotenv.env['API_KEY']!,
+      ),
+    );
+    _dio.interceptors.add(
+      PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseBody: true,
+        responseHeader: false,
+        error: true,
+        compact: true,
       ),
     );
   }

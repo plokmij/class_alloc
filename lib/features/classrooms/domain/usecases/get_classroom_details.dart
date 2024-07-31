@@ -21,7 +21,8 @@ class GetClassroomDetails implements UseCase<ClassroomDetailWithSubject, int> {
       (failure) => Left(failure),
       (classroom) async {
         if (classroom.hasSubject) {
-          final subject = await subjectRepository.getSubjectById(id);
+          final subject =
+              await subjectRepository.getSubjectById(classroom.subjectId!);
           return subject.fold(
             (failure) => Left(failure),
             (subject) => Right(
@@ -31,7 +32,7 @@ class GetClassroomDetails implements UseCase<ClassroomDetailWithSubject, int> {
                 size: classroom.size,
                 layout: classroom.layout,
                 subject: subject,
-                subjectId: classroom.subjectId,
+                subjectId: subject.id,
               ),
             ),
           );
