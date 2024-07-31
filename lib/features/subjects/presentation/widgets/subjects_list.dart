@@ -1,7 +1,7 @@
-import 'package:class_alloc/core/ui/widgets/item_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/presentation/widgets/item_tile.dart';
 import '../../domain/entities/subject.dart';
 
 class SubjectsList extends StatelessWidget {
