@@ -1,4 +1,5 @@
 import 'package:class_alloc/features/students/presentation/pages/student_details_page.dart';
+import 'package:class_alloc/features/subjects/presentation/pages/subject_detail_page.dart';
 import 'package:class_alloc/features/subjects/presentation/pages/subjects_page.dart';
 
 import '../../features/home/presentation/pages/home_page.dart';
@@ -32,7 +33,7 @@ final GoRouter appRouter = GoRouter(
       path: '/subjects/:id',
       builder: (context, state) {
         final id = int.parse(state.pathParameters['id'] ?? '');
-        return StudentDetailsPage(studentId: id);
+        return SubjectDetailPage(subjectId: id);
       },
     ),
     GoRoute(

@@ -1,4 +1,5 @@
 import 'package:class_alloc/features/students/presentation/blocs/student_detail_cubit/student_detail_cubit.dart';
+import 'package:class_alloc/features/subjects/presentation/blocs/subject_detail_cubit/subject_detail_cubit.dart';
 import 'package:class_alloc/features/subjects/presentation/blocs/subjects_cubit/subjects_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +32,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<StudentDetailCubit>(),
         ),
-        BlocProvider(create: (context) => getIt<SubjectsCubit>()),
+        BlocProvider(
+          create: (context) => getIt<SubjectsCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SubjectDetailCubit>(),
+        ),
       ],
       child: MaterialApp.router(
         title: 'Flutter Demo',
