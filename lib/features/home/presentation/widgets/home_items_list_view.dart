@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../domain/entities/home_item.dart';
 
@@ -33,7 +34,7 @@ class _HomeItemListItem extends StatelessWidget {
       color: item.color.withOpacity(0.35),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushNamed(item.route);
+          context.push(item.route);
         },
         child: Center(
           child: Padding(
