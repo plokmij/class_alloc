@@ -1,3 +1,4 @@
+import 'package:class_alloc/features/classrooms/presentation/pages/classroom_detail_page.dart';
 import 'package:class_alloc/features/classrooms/presentation/pages/classrooms_page.dart';
 import 'package:class_alloc/features/students/presentation/pages/student_details_page.dart';
 import 'package:class_alloc/features/subjects/presentation/pages/subject_detail_page.dart';
@@ -40,6 +41,16 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/classrooms',
       builder: (context, state) => ClassroomsPage(),
+    ),
+    GoRoute(
+      path: '/classrooms/:id',
+      builder: (context, state) {
+        final id = int.parse(state.pathParameters['id'] ?? '');
+        return ClassroomDetailPage(
+          id: id,
+          classroomName: state.extra as String,
+        );
+      },
     ),
     GoRoute(
       path: '/registration',

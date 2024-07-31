@@ -37,7 +37,10 @@ class _ClassroomTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ItemTile(
       onTap: () {
-        context.push('/classrooms/${classroom.id}');
+        context.push(
+          '/classrooms/${classroom.id}',
+          extra: classroom.name,
+        );
       },
       title: classroom.name,
       subtitle: classroom.layout.name,
