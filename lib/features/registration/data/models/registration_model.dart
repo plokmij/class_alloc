@@ -7,7 +7,7 @@ class RegistrationModel extends Registration {
     required super.subjectId,
   });
 
-  factory RegistrationModel.fromJson(Map<String, dynamic> json) {
+  factory RegistrationModel.fromParsedJson(Map<String, dynamic> json) {
     return RegistrationModel(
       id: json['id'],
       studentId: json['student'],

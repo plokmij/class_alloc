@@ -5,7 +5,8 @@ import '../entities/registration.dart';
 
 abstract class RegistrationRepository {
   Future<Either<Failure, List<Registration>>> getRegistrations();
-  Future<Registration> getRegistrationById(int id);
-  Future<Registration> registerStudent(int studentId, int subjectId);
-  Future<Registration> removeRegistration(int registrationId);
+  Future<Either<Failure, Registration>> getRegistrationById(int id);
+  Future<Either<Failure, Registration>> registerStudent(
+      int studentId, int subjectId);
+  Future<Either<Failure, bool>> removeRegistration(int registrationId);
 }
