@@ -3,7 +3,9 @@ import 'package:class_alloc/features/subjects/data/datasources/subject_data_sour
 import 'package:class_alloc/features/subjects/domain/entities/subject.dart';
 import 'package:class_alloc/features/subjects/domain/repositories/subject_repository.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
+@Singleton(as: SubjectRepository)
 class SubjectRepositoryImpl implements SubjectRepository {
   final SubjectDataSource subjectDataSource;
 
