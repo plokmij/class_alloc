@@ -114,7 +114,7 @@ class _SubjectTile extends StatelessWidget {
           : null,
       trailing: TextButton(
         onPressed: () async {
-          context.push('/subjects/select').then((value) {
+          context.pushNamed('subject-selection').then((value) {
             if (value is int) {
               context
                   .read<ClassroomDetailCubit>()
