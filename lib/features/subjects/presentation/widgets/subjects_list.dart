@@ -1,3 +1,4 @@
+import 'package:class_alloc/core/ui/widgets/item_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -37,22 +38,18 @@ class SubjectTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.grey.shade300,
-      elevation: 0,
-      child: ListTile(
-        onTap: () {
-          context.push('/subjects/${subject.id}');
-        },
-        title: Text(subject.name),
-        subtitle: Text(subject.teacher),
-        trailing: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Credits'),
-            Text('${subject.credits.toString()}'),
-          ],
-        ),
+    return ItemTile(
+      onTap: () {
+        context.push('/subjects/${subject.id}');
+      },
+      title: subject.name,
+      subtitle: subject.teacher,
+      trailing: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text('Credits'),
+          Text('${subject.credits.toString()}'),
+        ],
       ),
     );
   }

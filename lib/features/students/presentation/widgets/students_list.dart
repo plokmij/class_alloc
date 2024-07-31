@@ -1,3 +1,4 @@
+import 'package:class_alloc/core/ui/widgets/item_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -37,17 +38,13 @@ class StudentTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.grey.shade300,
-      elevation: 0,
-      child: ListTile(
-        onTap: () {
-          context.push('/students/${student.id}');
-        },
-        title: Text(student.name),
-        subtitle: Text(student.email),
-        trailing: Text('Age: ${student.age.toString()}'),
-      ),
+    return ItemTile(
+      onTap: () {
+        context.push('/students/${student.id}');
+      },
+      title: student.name,
+      subtitle: student.email,
+      trailing: Text('Age: ${student.age.toString()}'),
     );
   }
 }
