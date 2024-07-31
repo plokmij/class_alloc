@@ -13,8 +13,8 @@ class Classroom {
 }
 
 enum Layout {
-  conference('conference'),
-  classroom('classroom');
+  conference('Conference'),
+  classroom('Classroom');
 
   final String name;
 
