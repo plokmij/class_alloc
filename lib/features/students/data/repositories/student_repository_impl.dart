@@ -6,7 +6,7 @@ import '../../domain/entities/student.dart';
 import '../../domain/repositories/student_repository.dart';
 import '../datasources/student_data_source.dart';
 
-@Injectable(as: StudentRepository)
+@Singleton(as: StudentRepository)
 class StudentRepositoryImpl implements StudentRepository {
   final StudentDataSource studentDataSource;
 
