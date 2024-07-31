@@ -4,8 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/students_cubit/student_cubit.dart';
 import '../widgets/students_list.dart';
 
-class StudentsPage extends StatelessWidget {
+class StudentsPage extends StatefulWidget {
   const StudentsPage({super.key});
+
+  @override
+  State<StudentsPage> createState() => _StudentsPageState();
+}
+
+class _StudentsPageState extends State<StudentsPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<StudentCubit>().loadStudents();
+  }
 
   @override
   Widget build(BuildContext context) {
