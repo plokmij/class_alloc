@@ -1,9 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:class_alloc/features/classrooms/domain/entities/classroom_detail.dart';
-import 'package:class_alloc/features/classrooms/domain/usecases/allocate_subject.dart';
-import 'package:class_alloc/features/classrooms/domain/usecases/get_classroom_details.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../domain/entities/classroom_detail_with_subject.dart';
+import '../../../domain/usecases/allocate_subject.dart';
+import '../../../domain/usecases/get_classroom_details.dart';
 
 part 'classroom_detail_state.dart';
 

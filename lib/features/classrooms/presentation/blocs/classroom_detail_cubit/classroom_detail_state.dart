@@ -12,7 +12,7 @@ final class ClassroomDetailInitial extends ClassroomDetailState {}
 final class ClassroomDetailLoading extends ClassroomDetailState {}
 
 final class ClassroomDetailLoaded extends ClassroomDetailState {
-  final ClassroomDetail classroom;
+  final ClassroomDetailWithSubject classroom;
 
   const ClassroomDetailLoaded(this.classroom);
 

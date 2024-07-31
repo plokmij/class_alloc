@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/usecases/usecase.dart';
-import '../../../domain/entities/subject.dart';
+import '../../../../../core/domain/entities/subject.dart';
 import '../../../domain/usecases/get_all_subjects.dart';
 
 part 'subjects_state.dart';

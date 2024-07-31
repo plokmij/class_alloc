@@ -1,3 +1,4 @@
+import 'package:class_alloc/features/classrooms/domain/entities/classroom_detail_with_subject.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -102,12 +103,15 @@ class _SubjectTile extends StatelessWidget {
     required this.classroom,
   });
 
-  final ClassroomDetail classroom;
+  final ClassroomDetailWithSubject classroom;
 
   @override
   Widget build(BuildContext context) {
     return ItemTile(
-      title: classroom.hasSubject ? 'Subject Allocated' : 'Add Subject',
+      title: classroom.hasSubject ? classroom.subject!.name : 'Add Subject',
+      subtitle: classroom.hasSubject
+          ? 'Subject Code: ${classroom.subject!.teacher}'
+          : null,
       trailing: TextButton(
         onPressed: () async {
           context.push('/subjects/select').then((value) {

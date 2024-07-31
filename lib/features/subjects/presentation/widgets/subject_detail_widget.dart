@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/subject.dart';
+import '../../../../core/domain/entities/subject.dart';
 
 class SubjectDetailWidget extends StatelessWidget {
   const SubjectDetailWidget({
