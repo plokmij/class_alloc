@@ -39,7 +39,7 @@ class _HomeItemGridTile extends StatelessWidget {
       color: item.color.withOpacity(0.35),
       child: InkWell(
         onTap: () {
-          context.go(item.route);
+          context.push(item.route);
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

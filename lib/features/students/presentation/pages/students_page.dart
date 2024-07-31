@@ -12,6 +12,7 @@ class StudentsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: false,
         title: const Text('Students'),
       ),
       body: Padding(
