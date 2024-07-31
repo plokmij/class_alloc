@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SubjectsPage extends StatefulWidget {
-  const SubjectsPage({super.key});
+  const SubjectsPage({
+    super.key,
+    this.isSelectorMode = false,
+  });
+
+  final bool isSelectorMode;
 
   @override
   State<SubjectsPage> createState() => _SubjectsPageState();
@@ -36,6 +41,7 @@ class _SubjectsPageState extends State<SubjectsPage> {
               );
             } else if (state is SubjectsLoaded) {
               return SubjectsList(
+                isSelectorMode: widget.isSelectorMode,
                 subjects: state.subjects,
               );
             } else if (state is SubjectsError) {

@@ -7,7 +7,7 @@ import '../models/classroom_model.dart';
 abstract class ClassroomDataSource {
   Future<List<ClassroomModel>> getClassrooms();
   Future<ClassroomDetailModel> getClassroom(int id);
-  Future<bool> allocateSubject(int id, int subjectId);
+  Future<ClassroomDetailModel> allocateSubject(int id, int subjectId);
 }
 
 @Injectable(as: ClassroomDataSource)
@@ -17,13 +17,14 @@ class ClassroomDataSourceImpl implements ClassroomDataSource {
   const ClassroomDataSourceImpl({required this.apiClient});
 
   @override
-  Future<bool> allocateSubject(int id, int subjectId) async {
+  Future<ClassroomDetailModel> allocateSubject(int id, int subjectId) async {
+    print('inside allocation api call');
     final response = await apiClient.patch(
       '/classrooms/$id',
       {'subject': subjectId},
     );
     if (response.statusCode == 200) {
-      return true;
+      return ClassroomDetailModel.fromParsedJson(response.data);
     } else {
       throw Exception('Failed to allocate subject');
     }

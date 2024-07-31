@@ -1,17 +1,22 @@
+import 'package:class_alloc/features/classrooms/domain/entities/classroom_detail.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../repositories/classroom_repository.dart';
 
-class AllocateSubject implements UseCase<bool, AllocateSubjectParams> {
+@injectable
+class AllocateSubject
+    implements UseCase<ClassroomDetail, AllocateSubjectParams> {
   final ClassroomRepository repository;
 
   AllocateSubject(this.repository);
 
   @override
-  Future<Either<Failure, bool>> call(AllocateSubjectParams params) async {
+  Future<Either<Failure, ClassroomDetail>> call(
+      AllocateSubjectParams params) async {
     return await repository.allocateSubject(
         params.subjectId, params.classroomId);
   }

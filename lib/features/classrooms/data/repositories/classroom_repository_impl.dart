@@ -24,12 +24,12 @@ class ClassroomRepositoryImpl implements ClassroomRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> allocateSubject(
+  Future<Either<Failure, ClassroomDetail>> allocateSubject(
       int subjectId, int classroomId) async {
     try {
-      final isAllocated =
-          await classroomDataSource.allocateSubject(subjectId, classroomId);
-      return Right(isAllocated);
+      final classroomDetail =
+          await classroomDataSource.allocateSubject(classroomId, subjectId);
+      return Right(classroomDetail);
     } on Exception {
       return Left(ServerFailure());
     }

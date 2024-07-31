@@ -32,6 +32,12 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => SubjectsPage(),
     ),
     GoRoute(
+      path: '/subjects/select',
+      builder: (context, state) => SubjectsPage(
+        isSelectorMode: true,
+      ),
+    ),
+    GoRoute(
       path: '/subjects/:id',
       builder: (context, state) {
         final id = int.parse(state.pathParameters['id'] ?? '');

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/ui/widgets/item_tile.dart';
 import '../../domain/entities/classroom.dart';
@@ -106,12 +107,19 @@ class _SubjectTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ItemTile(
-      title:
-          classroom.subject.isEmpty ? 'No Subject Allocted' : classroom.subject,
+      title: classroom.hasSubject ? 'Subject Allocated' : 'Add Subject',
       trailing: TextButton(
-        onPressed: () {},
+        onPressed: () async {
+          context.push('/subjects/select').then((value) {
+            if (value is int) {
+              context
+                  .read<ClassroomDetailCubit>()
+                  .changeSubject(classroom.id, value);
+            }
+          });
+        },
         child: Text(
-          classroom.subject.isEmpty ? 'Allocate' : 'Change',
+          classroom.hasSubject ? 'Change' : 'Add',
         ),
       ),
     );

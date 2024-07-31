@@ -7,5 +7,6 @@ import '../entities/classroom.dart';
 abstract class ClassroomRepository {
   Future<Either<Failure, List<Classroom>>> getClassrooms();
   Future<Either<Failure, ClassroomDetail>> getClassroom(int id);
-  Future<Either<Failure, bool>> allocateSubject(int classroomId, int subjectId);
+  Future<Either<Failure, ClassroomDetail>> allocateSubject(
+      int classroomId, int subjectId);
 }

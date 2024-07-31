@@ -1,15 +1,15 @@
 import 'classroom.dart';
 
 class ClassroomDetail extends Classroom {
-  final String subject;
+  final int? subjectId;
 
   ClassroomDetail({
     required super.id,
     required super.name,
     required super.size,
     required super.layout,
-    required this.subject,
+    required this.subjectId,
   });
 
-  bool get hasSubject => subject.isNotEmpty;
+  bool get hasSubject => subjectId != null;
 }

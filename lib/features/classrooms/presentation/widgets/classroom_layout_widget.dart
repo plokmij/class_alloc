@@ -30,8 +30,10 @@ class _ConferenceLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
+      padding: const EdgeInsets.only(
+        top: 30,
+        left: 20,
+        right: 20,
       ),
       child: ListView.builder(
         itemCount: size ~/ 2 + size % 2,

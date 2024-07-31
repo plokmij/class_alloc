@@ -7,7 +7,7 @@ class ClassroomDetailModel extends ClassroomDetail {
     required super.name,
     required super.size,
     required super.layout,
-    required super.subject,
+    required super.subjectId,
   });
 
   factory ClassroomDetailModel.fromParsedJson(Map<String, dynamic> json) {
@@ -16,7 +16,7 @@ class ClassroomDetailModel extends ClassroomDetail {
       name: json['name'],
       size: json['size'],
       layout: Layout.fromName(json['layout']),
-      subject: json['subject'],
+      subjectId: json['subject'] is int ? json['subject'] : null,
     );
   }
 }
