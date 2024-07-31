@@ -34,6 +34,7 @@ class StudentsPage extends StatelessWidget {
               return StudentsList(students: state.students);
             } else if (state is StudentError) {
               return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Center(
                     child: Text(state.message),
