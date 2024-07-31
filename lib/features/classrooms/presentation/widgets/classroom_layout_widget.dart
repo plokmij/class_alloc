@@ -29,30 +29,35 @@ class _ConferenceLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: size ~/ 2 + size % 2,
-      itemBuilder: (contex, index) {
-        return Row(
-          children: [
-            _buildChairIcon(),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                ),
-                child: Opacity(
-                  opacity: 0,
-                  child: _buildChairIcon(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
+      child: ListView.builder(
+        itemCount: size ~/ 2 + size % 2,
+        itemBuilder: (contex, index) {
+          return Row(
+            children: [
+              _buildChairIcon(),
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                  ),
+                  child: Opacity(
+                    opacity: 0,
+                    child: _buildChairIcon(),
+                  ),
                 ),
               ),
-            ),
-            Opacity(
-              opacity: (index % 2 != 0 || index != size ~/ 2) ? 1 : 0,
-              child: _buildChairIcon(),
-            ),
-          ],
-        );
-      },
+              Opacity(
+                opacity: (index % 2 != 0 || index != size ~/ 2) ? 1 : 0,
+                child: _buildChairIcon(),
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 
