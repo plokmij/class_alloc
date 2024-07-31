@@ -26,22 +26,26 @@ class GetRegistrationsList
     return registrations.fold(
       (failure) => Left(failure),
       (registrations) async {
-        final List<RegistrationDetails> registrationDetails = [];
-        for (var registration in registrations) {
-          final student =
-              await studentRepository.getStudentById(registration.studentId);
-          final subject =
-              await subjectRepository.getSubjectById(registration.subjectId);
-          final registrationDetail = RegistrationDetails(
-            id: registration.id,
-            studentId: registration.studentId,
-            subjectId: registration.subjectId,
-            student: student.getOrElse(() => throw ServerFailure()),
-            subject: subject.getOrElse(() => throw ServerFailure()),
-          );
-          registrationDetails.add(registrationDetail);
+        try {
+          final List<RegistrationDetails> registrationDetails = [];
+          for (var registration in registrations) {
+            final student =
+                await studentRepository.getStudentById(registration.studentId);
+            final subject =
+                await subjectRepository.getSubjectById(registration.subjectId);
+            final registrationDetail = RegistrationDetails(
+              id: registration.id,
+              studentId: registration.studentId,
+              subjectId: registration.subjectId,
+              student: student.getOrElse(() => throw ServerFailure()),
+              subject: subject.getOrElse(() => throw ServerFailure()),
+            );
+            registrationDetails.add(registrationDetail);
+          }
+          return Right(registrationDetails);
+        } catch (_) {
+          return Left(ServerFailure());
         }
-        return Right(registrationDetails);
       },
     );
   }
