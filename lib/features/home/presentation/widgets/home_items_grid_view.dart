@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../domain/entities/home_item.dart';
 
@@ -38,7 +39,7 @@ class _HomeItemGridTile extends StatelessWidget {
       color: item.color.withOpacity(0.35),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushNamed(item.route);
+          context.go(item.route);
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

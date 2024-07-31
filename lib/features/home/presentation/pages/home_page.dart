@@ -14,25 +14,25 @@ class HomePage extends StatelessWidget {
       title: 'Students',
       icon: Icons.people,
       color: Colors.green,
-      route: 'students', //TODO: Add route from router
+      route: '/students', //TODO: Add route from router
     ),
     HomeItem(
       title: 'Subjects',
       icon: Icons.book,
       color: Colors.blue,
-      route: 'subjects',
+      route: '/subjects',
     ),
     HomeItem(
       title: 'Classes',
       icon: Icons.class_,
       color: Colors.orange,
-      route: 'classes',
+      route: '/classes',
     ),
     HomeItem(
       title: 'Teachers',
       icon: Icons.person,
       color: Colors.purple,
-      route: 'teachers',
+      route: '/teachers',
     ),
   ];
 
