@@ -1,4 +1,5 @@
 import 'package:class_alloc/features/students/presentation/pages/student_details_page.dart';
+import 'package:class_alloc/features/subjects/presentation/pages/subjects_page.dart';
 
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/students/presentation/pages/students_page.dart';
@@ -25,7 +26,7 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/subjects',
-      builder: (context, state) => Container(),
+      builder: (context, state) => SubjectsPage(),
     ),
     GoRoute(
       path: '/classrooms',
