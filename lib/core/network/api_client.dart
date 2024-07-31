@@ -9,6 +9,7 @@ class ApiClient {
   ApiClient() : _dio = Dio() {
     final options = BaseOptions(
       baseUrl: 'https://nibrahim.pythonanywhere.com/',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     );
     _dio.options = options;
     _dio.interceptors.add(
