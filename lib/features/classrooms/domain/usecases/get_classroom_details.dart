@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/domain/repositories/subject_repository.dart';
+import '../../../../core/modules/subjects/domain/repositories/subject_repository.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/classroom_detail_with_subject.dart';

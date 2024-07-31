@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../core/domain/entities/subject.dart';
+import '../../../../../core/modules/subjects/domain/entities/subject.dart';
 import '../../../domain/usecases/get_subject_by_id.dart';
 
 part 'subject_detail_state.dart';

@@ -1,4 +1,4 @@
-import '../../../../core/domain/entities/subject.dart';
+import '../../../../core/modules/subjects/domain/entities/subject.dart';
 import 'classroom_detail.dart';
 
 class ClassroomDetailWithSubject extends ClassroomDetail {
