@@ -4,8 +4,8 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
-import '../entities/student.dart';
-import '../repositories/student_repository.dart';
+import '../../../../core/modules/students/domain/entities/student.dart';
+import '../../../../core/modules/students/domain/repositories/student_repository.dart';
 
 @injectable
 class GetAllStudents implements UseCase<List<Student>, NoParams> {

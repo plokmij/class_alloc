@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/usecases/usecase.dart';
-import '../../../domain/entities/student.dart';
+import '../../../../../core/modules/students/domain/entities/student.dart';
 import '../../../domain/usecases/get_all_students.dart';
 
 part 'student_state.dart';

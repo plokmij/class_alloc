@@ -2,7 +2,7 @@ import 'package:class_alloc/core/presentation/widgets/item_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../domain/entities/student.dart';
+import '../../../../core/modules/students/domain/entities/student.dart';
 
 class StudentsList extends StatelessWidget {
   const StudentsList({

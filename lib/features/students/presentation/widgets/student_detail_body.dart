@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/student.dart';
+import '../../../../core/modules/students/domain/entities/student.dart';
 
 class StudentDetailWidget extends StatelessWidget {
   const StudentDetailWidget({

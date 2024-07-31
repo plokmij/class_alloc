@@ -1,4 +1,4 @@
-import 'package:class_alloc/features/students/domain/entities/student.dart';
+import 'package:class_alloc/core/modules/students/domain/entities/student.dart';
 
 class StudentModel extends Student {
   const StudentModel({

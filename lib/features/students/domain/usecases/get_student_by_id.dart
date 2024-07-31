@@ -1,10 +1,10 @@
-import 'package:class_alloc/features/students/domain/entities/student.dart';
+import 'package:class_alloc/core/modules/students/domain/entities/student.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
-import '../repositories/student_repository.dart';
+import '../../../../core/modules/students/domain/repositories/student_repository.dart';
 
 @injectable
 class GetStudentById implements UseCase<Student, int> {
