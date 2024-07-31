@@ -18,15 +18,24 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/students',
+      routes: [
+        GoRoute(
+          path: ':id',
+          builder: (context, state) {
+            final id = int.parse(state.pathParameters['id'] ?? '');
+            return StudentDetailsPage(studentId: id);
+          },
+        ),
+      ],
       builder: (context, state) => StudentsPage(),
     ),
-    GoRoute(
-      path: '/students/:id',
-      builder: (context, state) {
-        final id = int.parse(state.pathParameters['id'] ?? '');
-        return StudentDetailsPage(studentId: id);
-      },
-    ),
+    // GoRoute(
+    //   path: '/students/:id',
+    //   builder: (context, state) {
+    //     final id = int.parse(state.pathParameters['id'] ?? '');
+    //     return StudentDetailsPage(studentId: id);
+    //   },
+    // ),
     GoRoute(
       path: '/subjects',
       builder: (context, state) => SubjectsPage(),
