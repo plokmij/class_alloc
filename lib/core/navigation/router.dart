@@ -29,6 +29,13 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => SubjectsPage(),
     ),
     GoRoute(
+      path: '/subjects/:id',
+      builder: (context, state) {
+        final id = int.parse(state.pathParameters['id'] ?? '');
+        return StudentDetailsPage(studentId: id);
+      },
+    ),
+    GoRoute(
       path: '/classrooms',
       builder: (context, state) => Container(),
     ),
