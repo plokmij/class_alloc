@@ -2,8 +2,19 @@ import 'package:class_alloc/features/subjects/presentation/blocs/subjects_cubit/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SubjectsPage extends StatelessWidget {
+class SubjectsPage extends StatefulWidget {
   const SubjectsPage({super.key});
+
+  @override
+  State<SubjectsPage> createState() => _SubjectsPageState();
+}
+
+class _SubjectsPageState extends State<SubjectsPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<SubjectsCubit>().loadSubjects();
+  }
 
   @override
   Widget build(BuildContext context) {
