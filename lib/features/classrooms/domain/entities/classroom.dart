@@ -30,4 +30,16 @@ enum Layout {
         throw ArgumentError('Invalid layout name: $name');
     }
   }
+
+  T when<T>({
+    required T Function() conference,
+    required T Function() classroom,
+  }) {
+    switch (this) {
+      case Layout.conference:
+        return conference();
+      case Layout.classroom:
+        return classroom();
+    }
+  }
 }
