@@ -18,7 +18,9 @@ class AllocateSubject
   Future<Either<Failure, ClassroomDetail>> call(
       AllocateSubjectParams params) async {
     return await repository.allocateSubject(
-        params.subjectId, params.classroomId);
+      params.subjectId,
+      params.classroomId,
+    );
   }
 }
 
