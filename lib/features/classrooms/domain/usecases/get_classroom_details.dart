@@ -7,10 +7,10 @@ import '../entities/classroom_detail.dart';
 import '../repositories/classroom_repository.dart';
 
 @injectable
-class GetClassroomById implements UseCase<ClassroomDetail, int> {
+class GetClassroomDetails implements UseCase<ClassroomDetail, int> {
   final ClassroomRepository repository;
 
-  GetClassroomById(this.repository);
+  GetClassroomDetails(this.repository);
 
   @override
   Future<Either<Failure, ClassroomDetail>> call(int id) async {
