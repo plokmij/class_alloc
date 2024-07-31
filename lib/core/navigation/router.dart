@@ -1,13 +1,13 @@
-import 'package:class_alloc/features/classrooms/presentation/pages/classroom_detail_page.dart';
-import 'package:class_alloc/features/classrooms/presentation/pages/classrooms_page.dart';
-import 'package:class_alloc/features/students/presentation/pages/student_details_page.dart';
-import 'package:class_alloc/features/subjects/presentation/pages/subject_detail_page.dart';
-import 'package:class_alloc/features/subjects/presentation/pages/subjects_page.dart';
-
-import '../../features/home/presentation/pages/home_page.dart';
-import '../../features/students/presentation/pages/students_page.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../features/classrooms/presentation/pages/classroom_detail_page.dart';
+import '../../features/classrooms/presentation/pages/classrooms_page.dart';
+import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/registration/presentation/pages/registrations_page.dart';
+import '../../features/students/presentation/pages/student_details_page.dart';
+import '../../features/students/presentation/pages/students_page.dart';
+import '../../features/subjects/presentation/pages/subject_detail_page.dart';
+import '../../features/subjects/presentation/pages/subjects_page.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',
@@ -60,7 +60,7 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/registration',
-      builder: (context, state) => Container(),
+      builder: (context, state) => RegistrationsPage(),
     ),
   ],
 );

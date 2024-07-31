@@ -1,5 +1,6 @@
 import 'package:class_alloc/features/classrooms/presentation/blocs/classroom_detail_cubit/classroom_detail_cubit.dart';
 import 'package:class_alloc/features/classrooms/presentation/blocs/classrooms_cubit/classrooms_cubit.dart';
+import 'package:class_alloc/features/registration/presentation/blocs/registration_cubit/registration_cubit.dart';
 import 'package:class_alloc/features/students/presentation/blocs/student_detail_cubit/student_detail_cubit.dart';
 import 'package:class_alloc/features/subjects/presentation/blocs/subject_detail_cubit/subject_detail_cubit.dart';
 import 'package:class_alloc/features/subjects/presentation/blocs/subjects_cubit/subjects_cubit.dart';
@@ -45,6 +46,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<ClassroomDetailCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<RegistrationCubit>(),
         ),
       ],
       child: MaterialApp.router(

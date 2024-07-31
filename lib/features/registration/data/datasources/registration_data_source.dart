@@ -18,7 +18,7 @@ class RegistrationDataSourceImpl implements RegistrationDataSource {
 
   @override
   Future<RegistrationModel> getRegistrationById(int id) async {
-    final response = await apiClient.get('/registrations/$id');
+    final response = await apiClient.get('/registration/$id');
     if (response.statusCode == 200) {
       return RegistrationModel.fromParsedJson(response.data);
     } else {
@@ -28,7 +28,7 @@ class RegistrationDataSourceImpl implements RegistrationDataSource {
 
   @override
   Future<List<RegistrationModel>> getRegistrations() async {
-    final response = await apiClient.get('/registrations');
+    final response = await apiClient.get('/registration');
     if (response.statusCode == 200) {
       final registrations = (response.data as Map)['registrations'] as List;
       return registrations
@@ -43,7 +43,7 @@ class RegistrationDataSourceImpl implements RegistrationDataSource {
   Future<RegistrationModel> registerStudent(
       int studentId, int subjectId) async {
     final response = await apiClient.post(
-      '/registrations',
+      '/registration',
       {'student': studentId, 'subject': subjectId},
     );
 
