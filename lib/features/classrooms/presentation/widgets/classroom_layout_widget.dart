@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../domain/entities/classroom_detail.dart';
 
@@ -28,7 +29,38 @@ class _ConferenceLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView.builder(
+      itemCount: size ~/ 2 + size % 2,
+      itemBuilder: (contex, index) {
+        return Row(
+          children: [
+            _buildChairIcon(),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                ),
+                child: Opacity(
+                  opacity: 0,
+                  child: _buildChairIcon(),
+                ),
+              ),
+            ),
+            Opacity(
+              opacity: (index % 2 != 0 || index != size ~/ 2) ? 1 : 0,
+              child: _buildChairIcon(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildChairIcon() {
+    return Padding(
+      padding: EdgeInsets.all(12),
+      child: Icon(Icons.person),
+    );
   }
 }
 
@@ -50,17 +82,13 @@ class _ClassroomLayout extends StatelessWidget {
         crossAxisSpacing: 16,
       ),
       itemBuilder: (context, index) {
-        return SizedBox(
-          height: 150,
-          width: 150,
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-              ),
+        return Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
             ),
-            child: Icon(Icons.person),
           ),
+          child: Icon(Icons.person),
         );
       },
     );
