@@ -24,7 +24,12 @@ class _SubjectDetailPageState extends State<SubjectDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Subject Detail'),
+        title: const Text(
+          'Subject Detail',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: BlocBuilder<SubjectDetailCubit, SubjectDetailState>(
         builder: (context, state) {

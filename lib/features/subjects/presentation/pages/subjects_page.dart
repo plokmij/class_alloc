@@ -27,7 +27,10 @@ class _SubjectsPageState extends State<SubjectsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Subjects Page'),
+        title: const Text(
+          'Subjects',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.only(
