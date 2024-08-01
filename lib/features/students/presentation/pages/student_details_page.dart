@@ -1,3 +1,4 @@
+import 'package:class_alloc/core/presentation/widgets/error_retry_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -52,20 +53,11 @@ class _StudentDetailsPageState extends State<StudentDetailsPage> {
               ),
             );
           } else if (state is StudentDetailError) {
-            return Column(
-              children: [
-                Center(
-                  child: Text(state.message),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    context
-                        .read<StudentDetailCubit>()
-                        .getStudentById(widget.studentId);
-                  },
-                  child: const Text('Retry'),
-                ),
-              ],
+            return ErrorRetryWidget(
+              onRetryPressed: () {
+                context.read<StudentDetailCubit>().getStudent(widget.studentId);
+              },
+              errorMessage: state.message,
             );
           } else {
             return const Center(

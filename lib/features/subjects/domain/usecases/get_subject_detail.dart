@@ -7,10 +7,10 @@ import '../../../../core/modules/subjects/domain/entities/subject.dart';
 import '../../../../core/modules/subjects/domain/repositories/subject_repository.dart';
 
 @injectable
-class GetSubjectById implements UseCase<Subject, int> {
+class GetSubjectDetail implements UseCase<Subject, int> {
   final SubjectRepository repository;
 
-  GetSubjectById(this.repository);
+  GetSubjectDetail(this.repository);
 
   @override
   Future<Either<Failure, Subject>> call(int id) async {
