@@ -1,3 +1,4 @@
+import 'package:class_alloc/core/presentation/widgets/error_retry_widget.dart';
 import 'package:class_alloc/features/subjects/presentation/blocs/subjects_cubit/subjects_cubit.dart';
 import 'package:class_alloc/features/subjects/presentation/widgets/subjects_list.dart';
 import 'package:flutter/material.dart';
@@ -45,23 +46,11 @@ class _SubjectsPageState extends State<SubjectsPage> {
                 subjects: state.subjects,
               );
             } else if (state is SubjectsError) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text('Error loading subjects'),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.read<SubjectsCubit>().loadSubjects();
-                      },
-                      child: const Text('Retry'),
-                    ),
-                  ],
-                ),
+              return ErrorRetryWidget(
+                onRetryPressed: () {
+                  context.read<SubjectsCubit>().loadSubjects();
+                },
+                errorMessage: state.message,
               );
             } else {
               return Container();
