@@ -1,14 +1,11 @@
 import '../../../../core/constants/textstyles_dart.dart';
 import '../../../../core/modules/subjects/domain/entities/subject.dart';
 import '../../domain/entities/classroom_detail_with_subject.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/presentation/widgets/item_tile.dart';
-import '../../domain/entities/classroom.dart';
-import '../../domain/entities/classroom_detail.dart';
 import '../blocs/classroom_detail_cubit/classroom_detail_cubit.dart';
 import '../widgets/classroom_layout_widget.dart';
 

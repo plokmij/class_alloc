@@ -2,7 +2,6 @@ import 'package:class_alloc/core/presentation/widgets/error_retry_widget.dart';
 import 'package:class_alloc/features/registration/presentation/blocs/registration_cubit/registration_cubit.dart';
 import 'package:class_alloc/features/registration/presentation/widgets/registrations_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 

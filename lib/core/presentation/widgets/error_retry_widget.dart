@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../features/registration/presentation/blocs/registration_cubit/registration_cubit.dart';
 
 class ErrorRetryWidget extends StatelessWidget {
   const ErrorRetryWidget({

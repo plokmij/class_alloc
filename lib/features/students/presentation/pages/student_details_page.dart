@@ -1,7 +1,6 @@
 import 'package:class_alloc/core/constants/textstyles_dart.dart';
 import 'package:class_alloc/core/presentation/widgets/error_retry_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/student_detail_cubit/student_detail_cubit.dart';
