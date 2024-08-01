@@ -4,9 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/presentation/widgets/error_retry_widget.dart';
-import '../../../../core/presentation/widgets/item_tile.dart';
-import '../../domain/entities/registration_details.dart';
 import '../blocs/registration_detail_cubit/registration_detail_cubit.dart';
+import '../widgets/registration_detail_widget.dart';
 
 class RegistrationDetailPage extends StatefulWidget {
   const RegistrationDetailPage({super.key, required this.registrationId});
@@ -107,39 +106,6 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
           },
         ),
       ),
-    );
-  }
-}
-
-class RegistrationDetailWidget extends StatelessWidget {
-  const RegistrationDetailWidget({
-    super.key,
-    required this.registration,
-  });
-
-  final RegistrationDetails registration;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        ItemTile(
-          title: 'Student Details',
-          subtitle:
-              registration.student.name + '\n' + registration.student.email,
-          trailing: Text('Age: ${registration.student.age}'),
-        ),
-        SizedBox(
-          height: 8,
-        ),
-        ItemTile(
-          title: 'Subject Details',
-          subtitle:
-              registration.subject.name + '\n' + registration.subject.teacher,
-          trailing: Text('Credit: ${registration.subject.credits}'),
-        ),
-      ],
     );
   }
 }
