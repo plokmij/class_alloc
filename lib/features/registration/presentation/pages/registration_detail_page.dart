@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/presentation/widgets/error_retry_widget.dart';
 import '../../../../core/presentation/widgets/item_tile.dart';
+import '../../domain/entities/registration_details.dart';
 import '../blocs/registration_detail_cubit/registration_detail_cubit.dart';
 
 class RegistrationDetailPage extends StatefulWidget {
@@ -66,41 +67,28 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
             } else if (state.registration != null) {
               return Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    ItemTile(
-                      title: 'Student Details',
-                      subtitle: state.registration!.student.name +
-                          '\n' +
-                          state.registration!.student.email,
-                      trailing: Text('Age: ${state.registration!.student.age}'),
+                    Expanded(
+                      child: RegistrationDetailWidget(
+                        registration: state.registration!,
+                      ),
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    ItemTile(
-                      title: 'Subject Details',
-                      subtitle: state.registration!.subject.name +
-                          '\n' +
-                          state.registration!.subject.teacher,
-                      trailing: Text(
-                          'Credit: ${state.registration!.subject.credits}'),
-                    ),
-                    Spacer(),
-                    CupertinoButton(
-                      color: Colors.red,
-                      onPressed: () {
-                        showCupertinoDialog(
-                          context: context,
-                          builder: (context) => DeleteConfirmationDialog(
-                            registrationId: widget.registrationId,
-                          ),
-                        );
-                      },
-                      child: Text('Delete Registration'),
-                    ),
-                    SizedBox(
-                      height: 40,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 24,
+                      ),
+                      child: CupertinoButton(
+                        color: Colors.red,
+                        onPressed: () {
+                          showCupertinoDialog(
+                            context: context,
+                            builder: (context) => DeleteConfirmationDialog(
+                              registrationId: state.registration!.id,
+                            ),
+                          );
+                        },
+                        child: Text('Delete Registration'),
+                      ),
                     ),
                   ],
                 ),
@@ -119,6 +107,39 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
           },
         ),
       ),
+    );
+  }
+}
+
+class RegistrationDetailWidget extends StatelessWidget {
+  const RegistrationDetailWidget({
+    super.key,
+    required this.registration,
+  });
+
+  final RegistrationDetails registration;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        ItemTile(
+          title: 'Student Details',
+          subtitle:
+              registration.student.name + '\n' + registration.student.email,
+          trailing: Text('Age: ${registration.student.age}'),
+        ),
+        SizedBox(
+          height: 8,
+        ),
+        ItemTile(
+          title: 'Subject Details',
+          subtitle:
+              registration.subject.name + '\n' + registration.subject.teacher,
+          trailing: Text('Credit: ${registration.subject.credits}'),
+        ),
+      ],
     );
   }
 }

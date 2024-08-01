@@ -37,6 +37,13 @@ class _AddRegistrationPageState extends State<AddRegistrationPage> {
         listener: (context, state) {
           if (state.isSuccess) {
             context.pop();
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: Colors.green,
+                content: Text('Registration Added Successfully'),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
             context.read<RegistrationCubit>().loadRegistrations();
           } else if (state.isFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
