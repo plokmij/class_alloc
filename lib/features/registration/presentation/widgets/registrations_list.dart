@@ -1,8 +1,11 @@
+import 'package:class_alloc/features/registration/presentation/blocs/registration_detail_cubit/registration_detail_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/presentation/widgets/item_tile.dart';
 import '../../domain/entities/registration.dart';
+import '../blocs/registration_cubit/registration_cubit.dart';
 
 class RegistrationsList extends StatelessWidget {
   const RegistrationsList({
@@ -23,7 +26,12 @@ class RegistrationsList extends StatelessWidget {
               index != 0 ? EdgeInsets.zero : const EdgeInsets.only(top: 16),
           child: RegistrationTile(
             onTap: () {
-              context.push('/registration/${registration.id}');
+              context.push('/registration/${registration.id}').then(
+                (_) {
+                  context.read<RegistrationDetailCubit>().clear();
+                  context.read<RegistrationCubit>().loadRegistrations();
+                },
+              );
             },
             registration: registration,
           ),

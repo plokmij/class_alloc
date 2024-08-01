@@ -1,8 +1,9 @@
-import 'package:class_alloc/core/presentation/widgets/error_retry_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/presentation/widgets/error_retry_widget.dart';
 import '../../../../core/presentation/widgets/item_tile.dart';
 import '../blocs/registration_detail_cubit/registration_detail_cubit.dart';
 
@@ -30,7 +31,26 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
       appBar: AppBar(
         title: const Text('Registration Detail'),
       ),
-      body: BlocBuilder<RegistrationDetailCubit, RegistrationDetailState>(
+      body: BlocConsumer<RegistrationDetailCubit, RegistrationDetailState>(
+        listener: (context, state) {
+          if (state.errorMessage != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: Colors.red,
+                content: Text(state.errorMessage!),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
+          } else if (state.deleteSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Registration Deleted Successfully'),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
+            context.pop();
+          }
+        },
         builder: (context, state) {
           if (state.isLoading) {
             return const Center(
@@ -79,11 +99,10 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
                             ),
                             CupertinoDialogAction(
                               onPressed: () {
-                                // context
-                                //     .read<RegistrationDetailCubit>()
-                                //     .deleteRegistration(
-                                //         widget.registrationId);
-                                // Navigator.of(context).pop();
+                                context.pop();
+                                context
+                                    .read<RegistrationDetailCubit>()
+                                    .deleteRegistration(widget.registrationId);
                               },
                               child: Text('Delete'),
                             ),

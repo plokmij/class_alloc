@@ -1,9 +1,11 @@
-import 'package:class_alloc/core/error/failures.dart';
-import 'package:class_alloc/core/usecases/usecase.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecases/usecase.dart';
 import '../repositories/registration_repository.dart';
 
+@injectable
 class DeleteRegistration implements UseCase<bool, int> {
   final RegistrationRepository repository;
 

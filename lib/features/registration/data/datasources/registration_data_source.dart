@@ -56,7 +56,7 @@ class RegistrationDataSourceImpl implements RegistrationDataSource {
 
   @override
   Future<bool> removeRegistration(int registrationId) async {
-    final response = await apiClient.delete('/registrations/$registrationId');
+    final response = await apiClient.delete('/registration/$registrationId');
 
     if (response.statusCode == 200) {
       return true;
