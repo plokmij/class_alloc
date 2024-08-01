@@ -33,7 +33,12 @@ class StudentsList extends StatelessWidget {
             },
             title: student.name,
             subtitle: student.email,
-            trailing: Text('Age: ${student.age.toString()}'),
+            trailing: Text(
+              'Age: ${student.age.toString()}',
+              style: const TextStyle(
+                fontSize: 16,
+              ),
+            ),
           ),
         );
       },

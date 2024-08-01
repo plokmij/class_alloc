@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/student_detail_cubit/student_detail_cubit.dart';
@@ -27,7 +28,12 @@ class _StudentDetailsPageState extends State<StudentDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student Detail'),
+        title: const Text(
+          'Student Detail',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: BlocBuilder<StudentDetailCubit, StudentDetailState>(
         builder: (context, state) {

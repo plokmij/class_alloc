@@ -40,17 +40,36 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        centerTitle: false,
+        toolbarHeight: kToolbarHeight * 1.5,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Hello',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Good Morning',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+          ],
+        ),
         actions: [
           BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               return IconButton(
                 icon: state.isGridMode
                     ? const Icon(
-                        Icons.list,
+                        Icons.menu,
                       )
                     : const Icon(
-                        Icons.grid_3x3,
+                        Icons.grid_view,
                       ),
                 onPressed: () {
                   context.read<HomeCubit>().toggleListingMode();
@@ -61,7 +80,11 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.only(
+          left: 12,
+          right: 12,
+          top: 40,
+        ),
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             return state.isListMode
@@ -73,3 +96,18 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+// class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+//   const CustomAppBar({super.key});
+
+//   @override
+//   Size get preferredSize => Size.fromHeight(kToolbarHeight * 2);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return AppBar(
+//       title: const Text('Custom App Bar'),
+//       toolbarHeight: height,
+//     );
+//   }
+// }

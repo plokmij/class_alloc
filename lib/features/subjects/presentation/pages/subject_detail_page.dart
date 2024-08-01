@@ -1,3 +1,4 @@
+import 'package:class_alloc/core/presentation/widgets/error_retry_widget.dart';
 import 'package:class_alloc/features/subjects/presentation/blocs/subject_detail_cubit/subject_detail_cubit.dart';
 import 'package:class_alloc/features/subjects/presentation/widgets/subject_detail_widget.dart';
 import 'package:flutter/material.dart';
@@ -34,21 +35,13 @@ class _SubjectDetailPageState extends State<SubjectDetailPage> {
           } else if (state is SubjectDetailLoaded) {
             return Center(child: SubjectDetailWidget(subject: state.subject));
           } else if (state is SubjectDetailError) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(state.message),
-                  ElevatedButton(
-                    onPressed: () {
-                      context
-                          .read<SubjectDetailCubit>()
-                          .loadSubject(widget.subjectId);
-                    },
-                    child: const Text('Retry'),
-                  ),
-                ],
-              ),
+            return ErrorRetryWidget(
+              onRetryPressed: () {
+                context
+                    .read<SubjectDetailCubit>()
+                    .loadSubject(widget.subjectId);
+              },
+              errorMessage: state.message,
             );
           } else {
             return const Center(

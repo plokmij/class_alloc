@@ -55,8 +55,13 @@ class SubjectTile extends StatelessWidget {
       trailing: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Credits'),
-          Text('${subject.credits.toString()}'),
+          Text(
+            '${subject.credits.toString()}',
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+          Text('Credit'),
         ],
       ),
     );

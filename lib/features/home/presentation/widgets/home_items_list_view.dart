@@ -10,11 +10,14 @@ class HomeItemsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        for (final item in items) _HomeItemListItem(item: item),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 180),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          for (final item in items) _HomeItemListItem(item: item),
+        ],
+      ),
     );
   }
 }
@@ -38,7 +41,7 @@ class _HomeItemListItem extends StatelessWidget {
         },
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(12.0),
             child: Text(
               item.title,
               style: const TextStyle(

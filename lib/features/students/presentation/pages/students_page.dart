@@ -28,8 +28,10 @@ class _StudentsPageState extends State<StudentsPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        centerTitle: false,
-        title: const Text('Students'),
+        title: const Text(
+          'Students',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.only(
