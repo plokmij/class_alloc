@@ -92,29 +92,8 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
                       onPressed: () {
                         showCupertinoDialog(
                           context: context,
-                          builder: (context) => CupertinoAlertDialog(
-                            title: Text('Delete'),
-                            content: Text(
-                              'Do you want to delete?',
-                            ),
-                            actions: [
-                              CupertinoDialogAction(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text('Cancel'),
-                              ),
-                              CupertinoDialogAction(
-                                onPressed: () {
-                                  context.pop();
-                                  context
-                                      .read<RegistrationDetailCubit>()
-                                      .deleteRegistration(
-                                          widget.registrationId);
-                                },
-                                child: Text('Delete'),
-                              ),
-                            ],
+                          builder: (context) => DeleteConfirmationDialog(
+                            registrationId: widget.registrationId,
                           ),
                         );
                       },
@@ -140,6 +119,42 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
           },
         ),
       ),
+    );
+  }
+}
+
+class DeleteConfirmationDialog extends StatelessWidget {
+  const DeleteConfirmationDialog({
+    super.key,
+    required this.registrationId,
+  });
+
+  final int registrationId;
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoAlertDialog(
+      title: Text('Delete'),
+      content: Text(
+        'Do you want to delete?',
+      ),
+      actions: [
+        CupertinoDialogAction(
+          onPressed: () {
+            context.pop();
+          },
+          child: Text('Cancel'),
+        ),
+        CupertinoDialogAction(
+          onPressed: () {
+            context.pop();
+            context
+                .read<RegistrationDetailCubit>()
+                .deleteRegistration(registrationId);
+          },
+          child: Text('Delete'),
+        ),
+      ],
     );
   }
 }
