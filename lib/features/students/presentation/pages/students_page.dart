@@ -1,3 +1,4 @@
+import 'package:class_alloc/core/constants/textstyles_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +31,7 @@ class _StudentsPageState extends State<StudentsPage> {
       appBar: AppBar(
         title: const Text(
           'Students',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: kAppTileTitleTextStyle,
         ),
       ),
       body: Padding(

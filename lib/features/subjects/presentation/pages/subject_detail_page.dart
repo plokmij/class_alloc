@@ -1,6 +1,7 @@
-import 'package:class_alloc/core/presentation/widgets/error_retry_widget.dart';
-import 'package:class_alloc/features/subjects/presentation/blocs/subject_detail_cubit/subject_detail_cubit.dart';
-import 'package:class_alloc/features/subjects/presentation/widgets/subject_detail_widget.dart';
+import '../../../../core/constants/textstyles_dart.dart';
+import '../../../../core/presentation/widgets/error_retry_widget.dart';
+import '../blocs/subject_detail_cubit/subject_detail_cubit.dart';
+import '../widgets/subject_detail_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,9 +27,7 @@ class _SubjectDetailPageState extends State<SubjectDetailPage> {
       appBar: AppBar(
         title: const Text(
           'Subject Detail',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: kAppTileTitleTextStyle,
         ),
       ),
       body: BlocBuilder<SubjectDetailCubit, SubjectDetailState>(

@@ -1,3 +1,4 @@
+import 'package:class_alloc/core/constants/textstyles_dart.dart';
 import 'package:class_alloc/core/presentation/widgets/error_retry_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -31,9 +32,7 @@ class _StudentDetailsPageState extends State<StudentDetailsPage> {
       appBar: AppBar(
         title: const Text(
           'Student Detail',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: kAppTileTitleTextStyle,
         ),
       ),
       body: BlocBuilder<StudentDetailCubit, StudentDetailState>(

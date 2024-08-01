@@ -1,3 +1,4 @@
+import 'package:class_alloc/core/constants/textstyles_dart.dart';
 import 'package:class_alloc/features/classrooms/presentation/blocs/classrooms_cubit/classrooms_cubit.dart';
 import 'package:class_alloc/features/classrooms/presentation/widgets/classrooms_list_widget.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class _ClassroomsPageState extends State<ClassroomsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Classrooms'),
+        title: const Text('Classrooms', style: kAppTileTitleTextStyle),
       ),
       body: Padding(
         padding: const EdgeInsets.only(

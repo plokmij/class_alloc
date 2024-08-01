@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/textstyles_dart.dart';
 import '../../../../core/modules/students/domain/entities/student.dart';
 import '../../../../core/modules/subjects/domain/entities/subject.dart';
 import '../../../../core/presentation/widgets/item_tile.dart';
@@ -26,7 +28,10 @@ class _AddRegistrationPageState extends State<AddRegistrationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Registration'),
+        title: const Text(
+          'New Registration',
+          style: kAppTileTitleTextStyle,
+        ),
       ),
       body: BlocConsumer<AddRegistartionCubit, AddRegistartionState>(
         listener: (context, state) {
@@ -47,6 +52,7 @@ class _AddRegistrationPageState extends State<AddRegistrationPage> {
           return Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
+              vertical: 16,
             ),
             child: Column(
               children: [
@@ -82,10 +88,11 @@ class _AddRegistrationPageState extends State<AddRegistrationPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                ElevatedButton(
+                CupertinoButton(
+                  color: Colors.green,
                   onPressed: () =>
                       context.read<AddRegistartionCubit>().submit(),
-                  child: const Text('Add Registration'),
+                  child: const Text('Register'),
                 ),
               ],
             ),

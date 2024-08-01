@@ -1,5 +1,6 @@
-import 'package:class_alloc/core/modules/subjects/domain/entities/subject.dart';
-import 'package:class_alloc/features/classrooms/domain/entities/classroom_detail_with_subject.dart';
+import '../../../../core/constants/textstyles_dart.dart';
+import '../../../../core/modules/subjects/domain/entities/subject.dart';
+import '../../domain/entities/classroom_detail_with_subject.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +37,10 @@ class _ClassroomDetailPageState extends State<ClassroomDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.classroomName),
+        title: Text(
+          widget.classroomName,
+          style: kAppTileTitleTextStyle,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(

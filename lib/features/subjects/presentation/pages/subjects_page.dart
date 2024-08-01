@@ -1,6 +1,7 @@
-import 'package:class_alloc/core/presentation/widgets/error_retry_widget.dart';
-import 'package:class_alloc/features/subjects/presentation/blocs/subjects_cubit/subjects_cubit.dart';
-import 'package:class_alloc/features/subjects/presentation/widgets/subjects_list.dart';
+import '../../../../core/constants/textstyles_dart.dart';
+import '../../../../core/presentation/widgets/error_retry_widget.dart';
+import '../blocs/subjects_cubit/subjects_cubit.dart';
+import '../widgets/subjects_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +30,7 @@ class _SubjectsPageState extends State<SubjectsPage> {
       appBar: AppBar(
         title: const Text(
           'Subjects',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: kAppTileTitleTextStyle,
         ),
       ),
       body: Padding(
