@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
       title: 'Students',
       icon: Icons.people,
       color: Colors.green,
-      route: '/students', //TODO: Add route from router
+      route: '/students',
     ),
     HomeItem(
       title: 'Subjects',

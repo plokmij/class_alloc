@@ -9,7 +9,6 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeState.initial());
 
   void toggleListingMode() {
-    //TODO: Add persistence
     emit(
       HomeState(
         listingMode: state.listingMode == ListingMode.grid
