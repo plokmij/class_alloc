@@ -8,9 +8,11 @@ class StudentsList extends StatelessWidget {
   const StudentsList({
     super.key,
     required this.students,
+    required this.isSelectorMode,
   });
 
   final List<Student> students;
+  final bool isSelectorMode;
 
   @override
   Widget build(BuildContext context) {
@@ -21,30 +23,20 @@ class StudentsList extends StatelessWidget {
         return Padding(
           padding:
               index != 0 ? EdgeInsets.zero : const EdgeInsets.only(top: 16),
-          child: StudentTile(student: student),
+          child: ItemTile(
+            onTap: () {
+              if (isSelectorMode) {
+                context.pop(student);
+                return;
+              }
+              context.push('/students/${student.id}');
+            },
+            title: student.name,
+            subtitle: student.email,
+            trailing: Text('Age: ${student.age.toString()}'),
+          ),
         );
       },
-    );
-  }
-}
-
-class StudentTile extends StatelessWidget {
-  const StudentTile({
-    super.key,
-    required this.student,
-  });
-
-  final Student student;
-
-  @override
-  Widget build(BuildContext context) {
-    return ItemTile(
-      onTap: () {
-        context.push('/students/${student.id}');
-      },
-      title: student.name,
-      subtitle: student.email,
-      trailing: Text('Age: ${student.age.toString()}'),
     );
   }
 }

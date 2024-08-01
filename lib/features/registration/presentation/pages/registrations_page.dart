@@ -73,7 +73,7 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
                   backgroundColor: Colors.blue.shade100,
                 ),
                 onPressed: () {
-                  //context.push(location);
+                  context.push('/registration/add');
                 },
                 child: Text(
                   'New Registration',

@@ -26,7 +26,7 @@ class SubjectsList extends StatelessWidget {
           child: SubjectTile(
             onTap: () {
               if (isSelectorMode) {
-                context.pop(subject.id);
+                context.pop(subject);
                 return;
               } else {
                 context.push('/subjects/${subject.id}');

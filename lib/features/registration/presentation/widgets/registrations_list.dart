@@ -23,7 +23,7 @@ class RegistrationsList extends StatelessWidget {
               index != 0 ? EdgeInsets.zero : const EdgeInsets.only(top: 16),
           child: RegistrationTile(
             onTap: () {
-              context.push('/registrations/${registration.id}');
+              context.push('/registration/${registration.id}');
             },
             registration: registration,
           ),

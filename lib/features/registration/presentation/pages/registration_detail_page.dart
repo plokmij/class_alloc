@@ -1,7 +1,9 @@
-import 'package:class_alloc/core/presentation/widgets/item_tile.dart';
+import 'package:class_alloc/core/presentation/widgets/error_retry_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/presentation/widgets/item_tile.dart';
 import '../blocs/registration_detail_cubit/registration_detail_cubit.dart';
 
 class RegistrationDetailPage extends StatefulWidget {
@@ -38,7 +40,7 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
           } else if (state is RegistrationDetailLoaded) {
             return Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ItemTile(
                     title: 'Student Details',
@@ -58,29 +60,57 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
                     trailing:
                         Text('Credit: ${state.registration.subject.credits}'),
                   ),
+                  Spacer(),
+                  CupertinoButton(
+                    color: Colors.red,
+                    onPressed: () {
+                      showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoAlertDialog(
+                          title: Text('Delete'),
+                          content: Text(
+                            'Do you want to delete?',
+                          ),
+                          actions: [
+                            CupertinoDialogAction(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Cancel'),
+                            ),
+                            CupertinoDialogAction(
+                              onPressed: () {
+                                // context
+                                //     .read<RegistrationDetailCubit>()
+                                //     .deleteRegistration(
+                                //         widget.registrationId);
+                                // Navigator.of(context).pop();
+                              },
+                              child: Text('Delete'),
+                            ),
+                          ],
+                        ),
+                      );
+                      // context
+                      //     .read<RegistrationDetailCubit>()
+                      //     .deleteRegistration(widget.registrationId);
+                    },
+                    child: Text('Delete Registration'),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
                 ],
               ),
             );
           } else if (state is RegistrationDetailError) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(state.message),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      context
-                          .read<RegistrationDetailCubit>()
-                          .loadRegistration(widget.registrationId);
-                    },
-                    child: Text('Retry'),
-                  ),
-                ],
-              ),
+            return ErrorRetryWidget(
+              onRetryPressed: () {
+                context
+                    .read<RegistrationDetailCubit>()
+                    .loadRegistration(widget.registrationId);
+              },
+              errorMessage: state.message,
             );
           }
           return const SizedBox.shrink();

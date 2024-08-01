@@ -1,3 +1,4 @@
+import 'package:class_alloc/core/modules/subjects/domain/entities/subject.dart';
 import 'package:class_alloc/features/classrooms/domain/entities/classroom_detail_with_subject.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -115,10 +116,10 @@ class _SubjectTile extends StatelessWidget {
       trailing: TextButton(
         onPressed: () async {
           context.pushNamed('subject-selection').then((value) {
-            if (value is int) {
+            if (value is Subject) {
               context
                   .read<ClassroomDetailCubit>()
-                  .changeSubject(classroom.id, value);
+                  .changeSubject(classroom.id, value.id);
             }
           });
         },

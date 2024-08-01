@@ -43,12 +43,12 @@ class RegistrationDataSourceImpl implements RegistrationDataSource {
   Future<RegistrationModel> registerStudent(
       int studentId, int subjectId) async {
     final response = await apiClient.post(
-      '/registration',
+      '/registration/',
       {'student': studentId, 'subject': subjectId},
     );
 
     if (response.statusCode == 200) {
-      return RegistrationModel.fromParsedJson(response.data);
+      return RegistrationModel.fromParsedJson(response.data['registration']);
     } else {
       throw Exception('Failed to register student');
     }

@@ -1,3 +1,4 @@
+import 'package:class_alloc/features/registration/presentation/pages/add_registration_page.dart';
 import 'package:class_alloc/features/registration/presentation/pages/registration_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -64,6 +65,10 @@ final GoRouter appRouter = GoRouter(
           path: 'registration',
           routes: [
             GoRoute(
+              path: 'add',
+              builder: (context, state) => AddRegistrationPage(),
+            ),
+            GoRoute(
               path: ':id',
               builder: (context, state) {
                 final id = int.parse(state.pathParameters['id'] ?? '');
@@ -81,6 +86,11 @@ final GoRouter appRouter = GoRouter(
       path: '/subject-selection',
       name: 'subject-selection',
       builder: (context, state) => SubjectsPage(isSelectorMode: true),
+    ),
+    GoRoute(
+      path: '/student-selection',
+      name: 'student-selection',
+      builder: (context, state) => StudentsPage(isSelectorMode: true),
     ),
   ],
 );

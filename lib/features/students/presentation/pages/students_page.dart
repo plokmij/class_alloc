@@ -5,7 +5,12 @@ import '../blocs/students_cubit/student_cubit.dart';
 import '../widgets/students_list.dart';
 
 class StudentsPage extends StatefulWidget {
-  const StudentsPage({super.key});
+  const StudentsPage({
+    super.key,
+    this.isSelectorMode = false,
+  });
+
+  final bool isSelectorMode;
 
   @override
   State<StudentsPage> createState() => _StudentsPageState();
@@ -42,7 +47,10 @@ class _StudentsPageState extends State<StudentsPage> {
                 child: CircularProgressIndicator(),
               );
             } else if (state is StudentLoaded) {
-              return StudentsList(students: state.students);
+              return StudentsList(
+                isSelectorMode: widget.isSelectorMode,
+                students: state.students,
+              );
             } else if (state is StudentError) {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
