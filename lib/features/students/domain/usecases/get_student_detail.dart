@@ -7,10 +7,10 @@ import '../../../../core/usecases/usecase.dart';
 import '../../../../core/modules/students/domain/repositories/student_repository.dart';
 
 @injectable
-class GetStudentById implements UseCase<Student, int> {
+class GetStudentDetail implements UseCase<Student, int> {
   final StudentRepository repository;
 
-  GetStudentById(this.repository);
+  GetStudentDetail(this.repository);
 
   @override
   Future<Either<Failure, Student>> call(int studentId) async {
