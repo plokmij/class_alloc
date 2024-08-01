@@ -32,33 +32,32 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
       ),
       body: BlocBuilder<RegistrationDetailCubit, RegistrationDetailState>(
         builder: (context, state) {
-          if (state is RegistrationDetailInitial ||
-              state is RegistrationDetailLoading) {
+          if (state.isLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is RegistrationDetailLoaded) {
+          } else if (state.registration != null) {
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ItemTile(
                     title: 'Student Details',
-                    subtitle: state.registration.student.name +
+                    subtitle: state.registration!.student.name +
                         '\n' +
-                        state.registration.student.email,
-                    trailing: Text('Age: ${state.registration.student.age}'),
+                        state.registration!.student.email,
+                    trailing: Text('Age: ${state.registration!.student.age}'),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   ItemTile(
                     title: 'Subject Details',
-                    subtitle: state.registration.subject.name +
+                    subtitle: state.registration!.subject.name +
                         '\n' +
-                        state.registration.subject.teacher,
+                        state.registration!.subject.teacher,
                     trailing:
-                        Text('Credit: ${state.registration.subject.credits}'),
+                        Text('Credit: ${state.registration!.subject.credits}'),
                   ),
                   Spacer(),
                   CupertinoButton(
@@ -91,9 +90,6 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
                           ],
                         ),
                       );
-                      // context
-                      //     .read<RegistrationDetailCubit>()
-                      //     .deleteRegistration(widget.registrationId);
                     },
                     child: Text('Delete Registration'),
                   ),
@@ -103,14 +99,14 @@ class _RegistrationDetailPageState extends State<RegistrationDetailPage> {
                 ],
               ),
             );
-          } else if (state is RegistrationDetailError) {
+          } else if (state.errorMessage != null) {
             return ErrorRetryWidget(
               onRetryPressed: () {
                 context
                     .read<RegistrationDetailCubit>()
                     .loadRegistration(widget.registrationId);
               },
-              errorMessage: state.message,
+              errorMessage: state.errorMessage!,
             );
           }
           return const SizedBox.shrink();

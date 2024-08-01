@@ -10,17 +10,24 @@ part 'registration_detail_state.dart';
 @injectable
 class RegistrationDetailCubit extends Cubit<RegistrationDetailState> {
   RegistrationDetailCubit(this._getRegistrationDetail)
-      : super(RegistrationDetailInitial());
+      : super(RegistrationDetailState.initial());
 
   final GetRegistrationDetail _getRegistrationDetail;
 
   Future<void> loadRegistration(int id) async {
-    emit(RegistrationDetailLoading());
+    emit(state.copyWith(isLoading: true));
     final registration = await _getRegistrationDetail(id);
     registration.fold(
       (failure) => emit(
-          RegistrationDetailError('Server Error: Failed to load registration')),
-      (registration) => emit(RegistrationDetailLoaded(registration)),
+        state.copyWith(
+          isLoading: false,
+          errorMessage: 'Failed to load registration',
+        ),
+      ),
+      (registration) => emit(state.copyWith(
+        isLoading: false,
+        registrationDetails: registration,
+      )),
     );
   }
 }
